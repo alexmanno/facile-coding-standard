@@ -13,7 +13,7 @@ Under development
 Installation
 ============
 
-Install the module via composer by running:
+Currently, [Composer](https://getcomposer.org/) is the only supported installation tool.
 
 ```
 $ composer require --dev facile-it/facile-coding-standard
@@ -33,6 +33,41 @@ The installer will also add two scripts in your `composer.json`;
   "cs-check": "php-cs-fixer fix --dry-run --diff",
   "cs-fix": "php-cs-fixer fix --diff"
 }
+```
+
+Configuration
+=============
+
+The installation configuration should be enough to use it.
+
+If you need to change the CS config file, we suggest to don't edit the main `.php_cs.dist` file.
+
+You can create a new file `.php_cs` with something like this:
+
+```php
+<?php
+
+/** @var PhpCsFixer\Config $config */
+$config = require __DIR__ . '/.php_cs.dist';
+
+// change your configuration...
+
+return $config;
+```
+
+Usage
+=====
+
+To start code style check:
+
+```
+$ composer cs-check
+```
+
+To automatically fix code style:
+
+```
+$ composer cs-fix
 ```
 
 ### PhpCsFixer configuration
